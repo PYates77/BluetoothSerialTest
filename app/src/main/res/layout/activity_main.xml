@@ -22,7 +22,7 @@
         android:id="@+id/open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/entry"
         android:layout_marginLeft="10dip"
         android:text="Open" />
@@ -61,8 +61,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/close"
         android:layout_marginTop="1dp"
-        android:layout_toRightOf="@id/tare"
+        android:layout_toEndOf="@id/tare"
         android:text="Calibrate" />
+
+    <Button
+        android:id="@+id/mediaNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/open"
+        android:text="Media Next" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart1"

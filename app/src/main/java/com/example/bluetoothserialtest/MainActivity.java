@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.BaseInputConnection;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
@@ -59,6 +61,7 @@ public class MainActivity extends Activity {
         Button closeButton = (Button) findViewById(R.id.close);
         Button tareButton = (Button) findViewById(R.id.tare);
         Button calibrateButton = (Button) findViewById(R.id.calibrate);
+        Button mediaNextButton = (Button) findViewById(R.id.mediaNext);
         myLabel = (TextView) findViewById(R.id.label);
         myTextbox = (EditText) findViewById(R.id.entry);
 
@@ -160,6 +163,21 @@ public class MainActivity extends Activity {
                 // set such that the current raw_data value takes up 0.4 times the screen
                 // solving equation 0.3 * SCREEN_HEIGHT = graph_scalar * raw_data - graph_offset
                 graph_scalar = (0.3f * SCREEN_HEIGHT + graph_offset) / raw_data;
+            }
+        });
+
+        //MediaNext button
+        mediaNextButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //BaseInputConnection mInputConnection = new BaseInputConnection(findViewById(R.layout.activity_main), true);
+                //mInputConnection.sendKeyEvent(KeyEvent.KEYCODE_MEDIA_NEXT);
+                Intent home = new Intent(Intent.ACTION_MAIN);
+                home.addCategory(Intent.CATEGORY_HOME);
+                //home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(home);
+                dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT));
+                dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_NEXT));
+
             }
         });
     }
